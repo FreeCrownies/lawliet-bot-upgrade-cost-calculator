@@ -1,4 +1,12 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-*.idea
+
+# User-specific stuff
+.idea/**/workspace.xml
+
+discord.xml
+
+*.iml
+modules.xml
+misc.xml
