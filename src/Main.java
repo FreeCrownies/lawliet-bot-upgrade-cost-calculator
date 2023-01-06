@@ -89,7 +89,7 @@ public class Main {
                                 int levelInt = Integer.parseInt(level) - 1;
                                 long cost = 0;
                                 for (int i = 0; i < levelInt; i++) {
-                                    cost += NumberUtil.flattenLong(Math.round(Math.pow(getValue(levelInt), 1.02) * startPrice), 4);
+                                    cost += NumberUtil.flattenLong(Math.round(Math.pow(getValue(i), 1.02) * startPrice), 4);
                                 }
                                 System.out.printf("Cost: %s\n", NumberUtil.numberToString(cost));
                             } catch (NumberFormatException e) {
