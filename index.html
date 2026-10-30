@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lawliet Fishery Calculator</title>
+  <meta name="description" content="Effects and upgrade costs of the Lawliet Bot fishery tools.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Lawliet Fishery Calculator</h1>
+      <p class="sub">Effect and upgrade costs of the fishery tools</p>
+    </header>
+
+    <section class="card" aria-label="Calculator">
+      <div class="field">
+        <span class="label" id="tool-label">Tool</span>
+        <div class="tools" role="radiogroup" aria-labelledby="tool-label" id="tools"></div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="level">Level</label>
+        <div class="level-row">
+          <button type="button" class="step" id="dec" aria-label="Lower level">−</button>
+          <input id="level" type="number" inputmode="numeric" min="1" step="1" value="10" autocomplete="off">
+          <button type="button" class="step" id="inc" aria-label="Raise level">+</button>
+        </div>
+        <p class="error" id="error" role="alert" hidden></p>
+      </div>
+    </section>
+
+    <section class="results" id="results" aria-live="polite">
+      <article class="card result">
+        <h2>Effect</h2>
+        <p class="value" id="effect">–</p>
+        <p class="hint">at this level</p>
+      </article>
+      <article class="card result">
+        <h2>Cost</h2>
+        <p class="value" id="cost">–</p>
+        <p class="hint">for this level</p>
+      </article>
+      <article class="card result accent">
+        <h2>Total cost</h2>
+        <p class="value" id="total">–</p>
+        <p class="hint">up to this level</p>
+      </article>
+    </section>
+
+    <section class="card dev" aria-label="Development over the levels">
+      <div class="dev-head">
+        <h2>Development</h2>
+        <div class="chips" role="radiogroup" aria-label="Levels shown in the charts" id="ranges"></div>
+      </div>
+      <p class="dev-note" id="dev-note">Levels 1 to 100 of the selected tool. The dot marks your level.</p>
+      <div id="charts"></div>
+      <div class="tooltip" id="tooltip" hidden></div>
+
+      <details class="table-view" id="table-view">
+        <summary>Table view</summary>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Level</th><th>Effect</th><th>Cost</th><th>Total cost</th></tr></thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <footer>Coded by Crown#0016 · <a href="https://github.com/FreeCrownies/lawliet-bot-upgrade-cost-calculator">FreeCrownies</a></footer>
+  </main>
+
+  <script src="logic.js"></script>
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
