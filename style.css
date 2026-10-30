@@ -55,6 +55,8 @@ h1 { margin: 0; font-size: 1.6rem; }
 }
 
 .field + .field { margin-top: 20px; }
+.levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
+.levels .field + .field { margin-top: 0; }
 .label { display: block; margin-bottom: 8px; font-size: .85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 
 .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
@@ -71,7 +73,7 @@ h1 { margin: 0; font-size: 1.6rem; }
 .tool[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); }
 
 .level-row { display: flex; gap: 8px; }
-#level {
+.level-row input {
   flex: 1; min-width: 0;
   padding: 10px 14px;
   font: inherit; font-size: 1.2rem; text-align: center;
@@ -79,7 +81,7 @@ h1 { margin: 0; font-size: 1.6rem; }
   border: 2px solid var(--border); border-radius: 12px;
   -moz-appearance: textfield;
 }
-#level::-webkit-outer-spin-button, #level::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.level-row input::-webkit-outer-spin-button, .level-row input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .step {
   width: 52px;
   font: inherit; font-size: 1.4rem;
@@ -87,9 +89,9 @@ h1 { margin: 0; font-size: 1.6rem; }
   border: 2px solid var(--border); border-radius: 12px;
   cursor: pointer;
 }
-.tool:focus-visible, .step:focus-visible, #level:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-#level:focus { border-color: var(--accent); }
-#level[aria-invalid="true"] { border-color: var(--danger); }
+.tool:focus-visible, .step:focus-visible, .level-row input:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.level-row input:focus { border-color: var(--accent); }
+.level-row input[aria-invalid="true"] { border-color: var(--danger); }
 
 .error { margin: 8px 0 0; color: var(--danger); font-size: .9rem; }
 
@@ -97,9 +99,10 @@ h1 { margin: 0; font-size: 1.6rem; }
 .result h2 { margin: 0; font-size: .85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 .result .value { margin: 8px 0 2px; font-size: clamp(1rem, 4.6vw, 1.5rem); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .result .hint { margin: 0; color: var(--muted); font-size: .85rem; }
+.plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-top: 16px; }
 .result.accent { border-color: var(--accent); }
 .result.accent .value { color: var(--accent); }
-.results.invalid .value { opacity: .35; }
+.results.invalid .value, .plan.invalid .value { opacity: .35; }
 
 footer { margin-top: 32px; text-align: center; color: var(--muted); font-size: .85rem; }
 footer a { color: inherit; }
@@ -130,6 +133,7 @@ footer a { color: inherit; }
 .chart .tick { fill: var(--muted); font-size: 11px; font-family: inherit; }
 .chart .line { fill: none; stroke: var(--series); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .chart .area { fill: var(--series); fill-opacity: .1; stroke: none; }
+.chart .band { fill: var(--grid); fill-opacity: .4; }
 .chart .dot { fill: var(--series); stroke: var(--card); stroke-width: 2; }
 .chart .crosshair { stroke: var(--muted); stroke-width: 1; }
 

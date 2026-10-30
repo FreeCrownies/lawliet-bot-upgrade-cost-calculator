@@ -72,6 +72,15 @@
     return cost;
   }
 
+  // Upgrading from level `from` to level `to`: difference of the totals / effects at those levels.
+  function upgradeCost(from, to, gear) {
+    return totalCostUpToLevel(to, gear) - totalCostUpToLevel(from, gear);
+  }
+
+  function effectGain(from, to, gear) {
+    return effectAtLevel(to, gear) - effectAtLevel(from, gear);
+  }
+
   // Effect, cost and total cost for the levels 1..maxLevel (same values as the functions above,
   // but the total is accumulated instead of recomputed for every level).
   function series(gear, maxLevel) {
@@ -92,7 +101,7 @@
   const api = {
     GEARS, MAX_LEVEL,
     getValue, getEffect, countDigits, flattenLong, numberToString,
-    effectAtLevel, costForLevel, totalCostUpToLevel, series,
+    effectAtLevel, costForLevel, totalCostUpToLevel, upgradeCost, effectGain, series,
   };
 
   if (typeof module !== 'undefined' && module.exports) module.exports = api;

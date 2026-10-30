@@ -1,6 +1,6 @@
 /*
  * Small dependency-free SVG line charts with a shared crosshair and tooltip.
- * Charts.create(mount, tooltip, definitions) -> { update(rows, selectedLevel) }
+ * Charts.create(mount, tooltip, definitions) -> { update(rows, marks) }, marks = { from, to } (levels or null)
  */
 (function (root) {
   'use strict';
@@ -36,7 +36,7 @@
 
   function create(mount, tooltip, defs) {
     let rows = [];
-    let selected = null;
+    let marks = { from: null, to: null };
     let hover = null;
     let charts = [];
     let width = 0;
@@ -90,21 +90,29 @@
         t.textContent = String(lv);
       }
 
+      // band between the current and the target level
+      const n1 = marks.from, n2 = marks.to;
+      if (n1 !== null && n2 !== null && n2 > n1 && n1 <= n) {
+        const bx = x(n1 - 1), bw = x(Math.min(n2, n) - 1) - bx;
+        el('rect', { class: 'band', x: bx, y: M.top, width: bw, height: plotH }, svg);
+      }
+
       const pts = values.map((v, i) => x(i).toFixed(1) + ',' + y(v).toFixed(1));
       el('polygon', { class: 'area', points: x(0) + ',' + y(0) + ' ' + pts.join(' ') + ' ' + x(n - 1) + ',' + y(0) }, svg);
       el('polyline', { class: 'line', points: pts.join(' ') }, svg);
 
-      // selected level
-      let selDot = null;
-      if (selected !== null && selected >= 1 && selected <= n) {
-        selDot = el('circle', { class: 'dot', cx: x(selected - 1), cy: y(values[selected - 1]), r: 5 }, svg);
+      // current and target level
+      for (const lv of [marks.from, marks.to]) {
+        if (lv !== null && lv >= 1 && lv <= n) {
+          el('circle', { class: 'dot', cx: x(lv - 1), cy: y(values[lv - 1]), r: 5 }, svg);
+        }
       }
 
       // hover layer
       const vline = el('line', { class: 'crosshair', y1: M.top, y2: M.top + plotH, visibility: 'hidden' }, svg);
       const hdot = el('circle', { class: 'dot', r: 4, visibility: 'hidden' }, svg);
 
-      const chart = { svg, x, y, values, vline, hdot, selDot };
+      const chart = { svg, x, y, values, vline, hdot };
 
       function indexFromEvent(e) {
         const r = svg.getBoundingClientRect();
@@ -118,7 +126,7 @@
         const dir = { ArrowLeft: -1, ArrowRight: 1, Home: -Infinity, End: Infinity }[e.key];
         if (dir === undefined) return;
         e.preventDefault();
-        const start = hover === null ? (selected !== null && selected <= n ? selected - 1 : 0) : hover;
+        const start = hover === null ? (marks.to !== null && marks.to <= n ? marks.to - 1 : 0) : hover;
         hover = Math.min(n - 1, Math.max(0, isFinite(dir) ? start + dir : (dir < 0 ? 0 : n - 1)));
         applyHover(null, svg);
       });
@@ -186,9 +194,9 @@
     }
 
     return {
-      update: function (newRows, selectedLevel) {
+      update: function (newRows, newMarks) {
         rows = newRows;
-        selected = selectedLevel;
+        marks = newMarks;
         if (hover !== null && hover >= rows.length) hover = null;
         build();
       },

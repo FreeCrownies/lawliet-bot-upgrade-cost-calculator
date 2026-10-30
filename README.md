@@ -3,13 +3,13 @@
 Calculates the effect and the upgrade costs of the fishery tools of the Lawliet Bot:
 Fishing Robot (Daily), Fishing Net (Voice), Fishing Rod (Message) and Work.
 
-Pick a tool and a level and you get
+Pick a tool, enter the level you are at and the level you want to reach, and you get
 
-- the **effect** at that level,
-- the **cost** for that level,
-- the **total cost** up to that level,
+- what the **upgrade costs** in total,
+- how much the **effect increases** (from → to),
+- the effect, cost and total cost at the target level,
 
-plus charts that show how all three develop over the levels.
+plus charts that show how all of this develops over the levels.
 
 ## Open it
 

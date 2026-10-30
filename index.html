@@ -20,32 +20,57 @@
         <div class="tools" role="radiogroup" aria-labelledby="tool-label" id="tools"></div>
       </div>
 
-      <div class="field">
-        <label class="label" for="level">Level</label>
-        <div class="level-row">
-          <button type="button" class="step" id="dec" aria-label="Lower level">−</button>
-          <input id="level" type="number" inputmode="numeric" min="1" step="1" value="10" autocomplete="off">
-          <button type="button" class="step" id="inc" aria-label="Raise level">+</button>
+      <div class="levels">
+        <div class="field">
+          <label class="label" for="from">Current level</label>
+          <div class="level-row">
+            <button type="button" class="step" id="from-dec" aria-label="Lower current level">−</button>
+            <input id="from" type="number" inputmode="numeric" min="1" step="1" value="1" autocomplete="off">
+            <button type="button" class="step" id="from-inc" aria-label="Raise current level">+</button>
+          </div>
+          <p class="error" id="from-error" role="alert" hidden></p>
         </div>
-        <p class="error" id="error" role="alert" hidden></p>
+
+        <div class="field">
+          <label class="label" for="level">Target level</label>
+          <div class="level-row">
+            <button type="button" class="step" id="dec" aria-label="Lower target level">−</button>
+            <input id="level" type="number" inputmode="numeric" min="1" step="1" value="10" autocomplete="off">
+            <button type="button" class="step" id="inc" aria-label="Raise target level">+</button>
+          </div>
+          <p class="error" id="error" role="alert" hidden></p>
+        </div>
       </div>
     </section>
 
-    <section class="results" id="results" aria-live="polite">
+    <section class="plan" id="plan" aria-live="polite" aria-label="Upgrade from the current to the target level">
+      <article class="card result accent">
+        <h2>Upgrade cost</h2>
+        <p class="value" id="plan-cost">–</p>
+        <p class="hint" id="plan-cost-hint">from the current to the target level</p>
+      </article>
+      <article class="card result accent">
+        <h2>Effect gain</h2>
+        <p class="value" id="plan-gain">–</p>
+        <p class="hint" id="plan-gain-hint">difference between the two levels</p>
+      </article>
+    </section>
+
+    <section class="results" id="results" aria-live="polite" aria-label="Values at the target level">
       <article class="card result">
         <h2>Effect</h2>
         <p class="value" id="effect">–</p>
-        <p class="hint">at this level</p>
+        <p class="hint">at the target level</p>
       </article>
       <article class="card result">
         <h2>Cost</h2>
         <p class="value" id="cost">–</p>
-        <p class="hint">for this level</p>
+        <p class="hint">for the target level</p>
       </article>
-      <article class="card result accent">
+      <article class="card result">
         <h2>Total cost</h2>
         <p class="value" id="total">–</p>
-        <p class="hint">up to this level</p>
+        <p class="hint">up to the target level</p>
       </article>
     </section>
 
@@ -54,7 +79,7 @@
         <h2>Development</h2>
         <div class="chips" role="radiogroup" aria-label="Levels shown in the charts" id="ranges"></div>
       </div>
-      <p class="dev-note" id="dev-note">Levels 1 to 100 of the selected tool. The dot marks your level.</p>
+      <p class="dev-note" id="dev-note">Levels 1 to 100 of the selected tool. The dots mark your current and target level.</p>
       <div id="charts"></div>
       <div class="tooltip" id="tooltip" hidden></div>
 
