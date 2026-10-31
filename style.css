@@ -56,6 +56,7 @@ h1 { margin: 0; font-size: 1.6rem; }
 
 .field + .field { margin-top: 20px; }
 .levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
+.help { margin: 6px 0 0; color: var(--muted); font-size: .85rem; }
 .levels .field + .field { margin-top: 0; }
 .label { display: block; margin-bottom: 8px; font-size: .85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 
@@ -102,7 +103,7 @@ h1 { margin: 0; font-size: 1.6rem; }
 .plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-top: 16px; }
 .result.accent { border-color: var(--accent); }
 .result.accent .value { color: var(--accent); }
-.results.invalid .value, .plan.invalid .value { opacity: .35; }
+.results.invalid .value, .plan.invalid .value, .budget-results.invalid .value { opacity: .35; }
 
 footer { margin-top: 32px; text-align: center; color: var(--muted); font-size: .85rem; }
 footer a { color: inherit; }
@@ -159,3 +160,10 @@ details.table-view summary { cursor: pointer; font-weight: 600; }
 .table-wrap th:first-child, .table-wrap td:first-child { text-align: left; }
 .table-wrap thead th { position: sticky; top: 0; background: var(--card); color: var(--muted); font-weight: 600; }
 .table-wrap tr.selected td { background: var(--accent-soft); }
+
+/* budget */
+.budget { margin-top: 16px; }
+.budget h2 { margin: 0; font-size: 1.1rem; }
+.budget .dev-note { margin: 4px 0 16px; }
+.budget-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px 20px; margin-top: 20px; }
+.budget-results .result h2 { font-size: .85rem; }

@@ -11,6 +11,11 @@ Pick a tool, enter the level you are at and the level you want to reach, and you
 
 plus charts that show how all of this develops over the levels.
 
+Have a prestige level? Enter it and all prices are adjusted (25 % cheaper per level).
+
+**What can I afford?** Enter your coins (for example `2500000` or `2.5b`) and the calculator shows
+how many levels you can upgrade from your current level, what it costs and how many coins are left.
+
 ## Open it
 
 **https://freecrownies.github.io/lawliet-bot-upgrade-cost-calculator/**

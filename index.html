@@ -40,6 +40,17 @@
           </div>
           <p class="error" id="error" role="alert" hidden></p>
         </div>
+
+        <div class="field">
+          <label class="label" for="prestige">Prestige level</label>
+          <div class="level-row">
+            <button type="button" class="step" id="prestige-dec" aria-label="Lower prestige level">−</button>
+            <input id="prestige" type="number" inputmode="numeric" min="0" max="30" step="1" value="0" autocomplete="off">
+            <button type="button" class="step" id="prestige-inc" aria-label="Raise prestige level">+</button>
+          </div>
+          <p class="help">Each prestige level makes upgrades 25 % cheaper.</p>
+          <p class="error" id="prestige-error" role="alert" hidden></p>
+        </div>
       </div>
     </section>
 
@@ -54,6 +65,40 @@
         <p class="value" id="plan-gain">–</p>
         <p class="hint" id="plan-gain-hint">difference between the two levels</p>
       </article>
+    </section>
+
+    <section class="card budget" aria-label="What can I afford?">
+      <h2>What can I afford?</h2>
+      <p class="dev-note">Enter your coins and see how far they get you from your current level. Uses the tool, current level and prestige level from above.</p>
+      <div class="field">
+        <label class="label" for="coins">Coins you have</label>
+        <div class="level-row">
+          <input id="coins" type="text" inputmode="text" placeholder="e.g. 2 500 000 000 or 2.5b" autocomplete="off" spellcheck="false">
+        </div>
+        <p class="error" id="coins-error" role="alert" hidden></p>
+      </div>
+      <div class="budget-results" id="budget" aria-live="polite">
+        <div class="result accent">
+          <h2>Reachable level</h2>
+          <p class="value" id="b-level">–</p>
+          <p class="hint" id="b-level-hint">enter your coins</p>
+        </div>
+        <div class="result">
+          <h2>Cost</h2>
+          <p class="value" id="b-spent">–</p>
+          <p class="hint">for these upgrades</p>
+        </div>
+        <div class="result">
+          <h2>Coins left</h2>
+          <p class="value" id="b-left">–</p>
+          <p class="hint" id="b-left-hint"></p>
+        </div>
+        <div class="result">
+          <h2>Effect gain</h2>
+          <p class="value" id="b-gain">–</p>
+          <p class="hint" id="b-gain-hint"></p>
+        </div>
+      </div>
     </section>
 
     <section class="results" id="results" aria-live="polite" aria-label="Values at the target level">
