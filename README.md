@@ -1,7 +1,7 @@
 # Lawliet Fishery Calculator
 
 Calculates the effect and the upgrade costs of the fishery tools of the Lawliet Bot:
-Fishing Robot (Daily), Fishing Net (Voice), Fishing Rod (Message) and Work.
+Fishing Robot (Daily), Fishing Net (Voice), Fishing Rod (Message), Work and Metal Detector (Treasure).
 
 Pick a tool, enter the level you are at and the level you want to reach, and you get
 

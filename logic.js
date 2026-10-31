@@ -8,10 +8,11 @@
 
   // Tools offered by the calculator (start price and effect per FisheryGear).
   const GEARS = {
-    daily:   { name: 'Fishing Robot', alias: 'Daily',   emoji: '🤖', startPrice: 25000, effect: 100 },
-    voice:   { name: 'Fishing Net',   alias: 'Voice',   emoji: '🥅', startPrice: 32000, effect: 1 },
-    message: { name: 'Fishing Rod',   alias: 'Message', emoji: '🎣', startPrice: 25000, effect: 1 },
-    work:    { name: 'Work',          alias: 'Work',    emoji: '💼', startPrice: 25000, effect: 4000 },
+    daily:    { name: 'Fishing Robot',  alias: 'Daily',    emoji: '🤖', startPrice: 25000, effect: 100 },
+    voice:    { name: 'Fishing Net',    alias: 'Voice',    emoji: '🥅', startPrice: 32000, effect: 1 },
+    message:  { name: 'Fishing Rod',    alias: 'Message',  emoji: '🎣', startPrice: 25000, effect: 1 },
+    work:     { name: 'Work',           alias: 'Work',     emoji: '💼', startPrice: 25000, effect: 4000 },
+    treasure: { name: 'Metal Detector', alias: 'Treasure', emoji: '🔍', startPrice: 20000, effect: 80000 },
   };
 
   // Highest level for which the totals still fit into a Java long.
